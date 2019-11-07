@@ -19,8 +19,13 @@ max.carat <- max(diamonds$carat)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Diamonds data set viewer"),
-    #actionButton("do", "Click me"),
+    titlePanel("Diamonds data set viewer on diamonds dataset"),
+    
+    
+    # setting action button
+    actionButton("go", 
+                 "Go!",
+                 icon = icon("adjust")))
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -31,15 +36,15 @@ ui <- fluidPage(
                         max = max.carat,
                         value = c(min.carat, max.carat)),
             
-            submitButton(text = "apply")
+            submitButton(text = "Go")
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
            plotOutput("diamonds_plot")
         )
-    )
-)
+    ) # deletions made
+
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
